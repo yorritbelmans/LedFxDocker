@@ -1,4 +1,4 @@
-FROM python:3.9-buster
+FROM python:3.10.14-bullseye
 
 WORKDIR /app
 
@@ -11,9 +11,11 @@ RUN apt-get install -y gcc \
 		       libavformat58 \
 		       portaudio19-dev \
 		       avahi-daemon \
-		       pulseaudio
+		       pulseaudio \
+			   cmake
 RUN pip install --upgrade pip wheel setuptools
 RUN pip install lastversion
+RUN pip install numpy
 RUN pip install git+https://github.com/LedFx/LedFx
 
 RUN apt-get install -y alsa-utils
